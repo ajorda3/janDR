@@ -13,7 +13,7 @@ public class BaseController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
 
-		model.addAttribute("message", "Velcome maven and Spring");
+		model.addAttribute("message", "Velcome maven and Spring dsaddsadsasddasdsadsdsadsadsadsadsa");
 
 		// Spring uses InternalResourceViewResolver and return back index.jsp
 		return "index";
