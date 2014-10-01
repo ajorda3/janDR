@@ -9,6 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<spring.version>4.1.0.RELEASE</spring.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
 		<junit.version>4.11</junit.version>
 		<jdk.version>1.7</jdk.version>
 	</properties>
@@ -16,8 +17,7 @@
 
 	<dependencies>
 
-
-		<!-- servlet dependencie -->
+		<!-- servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -25,7 +25,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Spring 3 dependencies -->
+		<!-- Spring 3 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -56,6 +56,36 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<!-- Spring ORM -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
+		<!-- JDBC MySQL connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+
+
+
+		<!-- TESTING -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
