@@ -55,9 +55,8 @@
     <beans:bean id="personDAO" class="si.jandr.engine.dao.PersonDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
-    <beans:bean id="personService" class="si.jandr.engine.service.PersonServiceImpl">
-        <beans:property name="personDAO" ref="personDAO"></beans:property>
-    </beans:bean>
+    
+    
     <context:component-scan base-package="si.jandr.engine" />
      
     <tx:annotation-driven transaction-manager="transactionManager"/>

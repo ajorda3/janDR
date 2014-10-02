@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import si.jandr.engine.dao.PersonDAO;
 import si.jandr.engine.models.Person;
-import si.jandr.engine.service.PersonService;
  
 @Controller
 public class PersonController {
      
-    private PersonService personService;
+    private PersonDAO personDAO;
      
     @Autowired(required=true)
-    @Qualifier(value="personService")
-    public void setPersonService(PersonService ps){
-        this.personService = ps;
+    @Qualifier(value="personDAO")
+    public void setpersonDAO(PersonDAO ps){
+        this.personDAO = ps;
     }
      
     @RequestMapping(value = "/persons", method = RequestMethod.GET)
     public String listPersons(Model model) {
         model.addAttribute("person", new Person());
-        model.addAttribute("listPersons", this.personService.listPersons());
+        model.addAttribute("listPersons", this.personDAO.listPersons());
         return "person";
     }
      
@@ -36,10 +36,10 @@ public class PersonController {
          
         if(p.getId() == 0){
             //new person, add it
-            this.personService.addPerson(p);
+            this.personDAO.addPerson(p);
         }else{
             //existing person, call update
-            this.personService.updatePerson(p);
+            this.personDAO.updatePerson(p);
         }
          
         return "redirect:/persons";
@@ -49,14 +49,14 @@ public class PersonController {
     @RequestMapping("/remove/{id}")
     public String removePerson(@PathVariable("id") int id){
          
-        this.personService.removePerson(id);
+        this.personDAO.removePerson(id);
         return "redirect:/persons";
     }
   
     @RequestMapping("/edit/{id}")
     public String editPerson(@PathVariable("id") int id, Model model){
-        model.addAttribute("person", this.personService.getPersonById(id));
-        model.addAttribute("listPersons", this.personService.listPersons());
+        model.addAttribute("person", this.personDAO.getPersonById(id));
+        model.addAttribute("listPersons", this.personDAO.listPersons());
         return "person";
     }
      

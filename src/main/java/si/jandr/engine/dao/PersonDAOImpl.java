@@ -2,10 +2,13 @@ package si.jandr.engine.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import si.jandr.engine.models.Person;
@@ -15,6 +18,7 @@ public class PersonDAOImpl implements PersonDAO {
      
     private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
  
+    @Autowired
     private SessionFactory sessionFactory;
      
     public void setSessionFactory(SessionFactory sf){
@@ -22,6 +26,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
  
     @Override
+    @Transactional
     public void addPerson(Person p) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(p);
@@ -29,6 +34,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
  
     @Override
+    @Transactional
     public void updatePerson(Person p) {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(p);
@@ -37,6 +43,7 @@ public class PersonDAOImpl implements PersonDAO {
  
     @SuppressWarnings("unchecked")
     @Override
+    @Transactional
     public List<Person> listPersons() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Person> personsList = session.createQuery("from Person").list();
@@ -47,6 +54,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
  
     @Override
+    @Transactional
     public Person getPersonById(int id) {
         Session session = this.sessionFactory.getCurrentSession();      
         Person p = (Person) session.load(Person.class, new Integer(id));
@@ -55,6 +63,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
  
     @Override
+    @Transactional
     public void removePerson(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Person p = (Person) session.load(Person.class, new Integer(id));
