@@ -1,7 +1,0 @@
-si\jandr\engine\Controllers\PersonController.class
-si\jandr\engine\dao\PersonDAOImpl.class
-si\jandr\engine\models\Person.class
-si\jandr\engine\service\PersonServiceImpl.class
-si\jandr\engine\Controllers\BaseController.class
-si\jandr\engine\dao\PersonDAO.class
-si\jandr\engine\service\PersonService.class
