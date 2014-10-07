@@ -29,7 +29,7 @@
         destroy-method="close">
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <beans:property name="url"
-            value="jdbc:mysql://localhost:3306/test" />
+            value="jdbc:mysql://127.0.0.1:3306/toolingdb" />
 <!--         <beans:property name="username" value="pankaj" /> -->
 <!--         <beans:property name="password" value="pankaj123" /> -->
     </beans:bean>
@@ -40,7 +40,8 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>si.jandr.engine.models.Person</beans:value>
+                <beans:value>si.jandr.engine.models.Tool</beans:value>
+                <beans:value>si.jandr.engine.models.Location</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -51,8 +52,13 @@
             </beans:props>
         </beans:property>
     </beans:bean>
-     
-    <beans:bean id="personDAO" class="si.jandr.engine.dao.PersonDAOImpl">
+   
+    
+    <beans:bean id="toolDAO" class="si.jandr.engine.dao.ToolDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="locationDAO" class="si.jandr.engine.dao.LocationDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
