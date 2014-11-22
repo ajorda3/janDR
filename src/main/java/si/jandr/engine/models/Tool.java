@@ -1,5 +1,7 @@
 package si.jandr.engine.models;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -7,7 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name = "tool")
+import org.hibernate.annotations.Proxy;
+
+@Entity
+@Proxy(lazy=false)
+@Table(name = "TOOL")
 public class Tool {
 
 	@Id
@@ -16,7 +22,7 @@ public class Tool {
 	
 	private String name;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "locationID")
 	private Location locationID;
 	

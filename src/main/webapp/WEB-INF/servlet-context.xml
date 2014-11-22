@@ -30,8 +30,8 @@
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <beans:property name="url"
             value="jdbc:mysql://127.0.0.1:3306/toolingdb" />
-<!--         <beans:property name="username" value="pankaj" /> -->
-<!--         <beans:property name="password" value="pankaj123" /> -->
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="asdf" />
     </beans:bean>
  
     <!-- Hibernate 4 SessionFactory Bean definition -->
@@ -40,6 +40,7 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
+            	<beans:value>si.jandr.engine.models.Person</beans:value>
                 <beans:value>si.jandr.engine.models.Tool</beans:value>
                 <beans:value>si.jandr.engine.models.Location</beans:value>
             </beans:list>
@@ -53,6 +54,11 @@
         </beans:property>
     </beans:bean>
    
+     <beans:bean id="personDAO" class="si.jandr.engine.dao.PersonDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+  
+    
     
     <beans:bean id="toolDAO" class="si.jandr.engine.dao.ToolDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
@@ -61,8 +67,8 @@
     <beans:bean id="locationDAO" class="si.jandr.engine.dao.LocationDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
-    
-    
+  
+  
     <context:component-scan base-package="si.jandr.engine" />
      
     <tx:annotation-driven transaction-manager="transactionManager"/>

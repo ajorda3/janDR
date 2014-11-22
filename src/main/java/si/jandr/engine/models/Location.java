@@ -3,13 +3,19 @@ package si.jandr.engine.models;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table(name = "location")
+import org.hibernate.annotations.Proxy;
+
+@Entity
+@Proxy(lazy=false)
+@Table(name = "LOCATION")
 public class Location {
 
 	@Id
@@ -19,7 +25,7 @@ public class Location {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "id")
+	@OneToMany(mappedBy = "id",fetch = FetchType.EAGER)
 	private Set<Tool> tools;
 
 	public int getId() {

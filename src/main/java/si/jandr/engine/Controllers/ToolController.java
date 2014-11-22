@@ -27,14 +27,19 @@ public class ToolController {
 	public String listPersons(Model model) {
 		//model.addAttribute("person", new Person());
 		
-		List<Tool> tools = this.toolDAO.listTools();
+		Tool tool = this.toolDAO.getToolById(0);
 		
-		String returnListTools = "";
-		for (Tool tool : tools ) {
-			returnListTools += tool + " \n";
-		}
-				
-		return returnListTools;
+		return tool.getName();
+		
+		
+//		List<Tool> tools = this.toolDAO.listTools();
+//		
+//		String returnListTools = "";
+//		for (Tool tool : tools ) {
+//			returnListTools += tool + " \n";
+//		}
+//				
+//		return returnListTools;
 	}
 
 }
