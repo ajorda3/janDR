@@ -15,6 +15,8 @@ public class BaseController {
 
 		model.addAttribute("message", "Velcome maven and Spring");
 
+		System.out.println("Testing develop");
+		
 		// Spring uses InternalResourceViewResolver and return back index.jsp
 		return "index";
 	}
